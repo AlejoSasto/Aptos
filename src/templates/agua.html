@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Su conjunto</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/conjunto">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/agua">Agua</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/luz">Luz</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/gas">Gas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/usuarios">Usuarios</a>
+      </li>
+  </div>
+  </nav>
+  <div class="col-md-8">
+     <!-- Inicio Tabla -->
+     <table class="table table-striped">
+        <thead>
+           <tr>
+              <td>Apellido Familiar</td>
+              <td>Correo</td>
+              <td>Usuario</td>
+              <td>Apartamento</td>
+              <td>Torre</td>
+              <td>Registro de pago</td>
+              <td>Pago Registrado</td>
+              <td>Accion</td>
+           </tr>
+        </thead>
+        <tbody>
+          {% for usuario in usuarios %}
+          <tr>
+            <td id="tabla_apellido{{usuario[0]}}">{{ usuario[1] }}</td>
+            <td id="tabla_correo{{usuario[0]}}">{{ usuario[2] }}</td>
+            <td id="tabla_usuario{{usuario[0]}}">{{ usuario[3] }}</td>
+            <td id="tabla_usuario{{usuario[0]}}">{{ usuario[6] }}</td>
+            <td id="tabla_usuario{{usuario[0]}}">{{ usuario[7] }}</td>
+            
+            <td>
+              <select name="pago" id="pago" >
+                <option value="1">Pago</option>
+                <option value="2">No pago</option>
+              </select>
+            </td>
+            <td><label name="lbl" id="tex"></label></td>
+            <td><button id="boton_form" class="btn btn-primary mt-3" type="submit" >Guardar</button></td>
+            {% endfor %}
+          </tr>
+          
+        </tbody>
+     </table>
+     <!-- Fin Tabla -->
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src=" {{ url_for('static', filename='js/obtenerTexto.js') }} "></script>
+  </body>
+</html>
